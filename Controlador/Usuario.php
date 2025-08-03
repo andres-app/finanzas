@@ -37,4 +37,10 @@ if (isset($_GET["op"])) {
         exit;
     }
 
+    if ($_GET["op"] == "listar") {
+        $usuarios = UsuarioModelo::listar();
+        echo json_encode($usuarios);
+        exit;
+    }
+
 }

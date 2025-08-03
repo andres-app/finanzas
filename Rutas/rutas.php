@@ -7,7 +7,7 @@ if (isset($_GET["url"])) {
 
   $modulosPermitidos = [
     "login", "registro", "dashboard", "salir",
-    "gastos", "categorias", "reportes"
+    "gastos", "categorias", "reportes", "usuarios"
     // agrega más módulos según tu app
   ];
 

@@ -1,9 +1,11 @@
 <?php
 require_once dirname(__DIR__) . "/config/conexion.php";
 
-class UsuarioModelo {
+class UsuarioModelo
+{
 
-    public static function registrar($nombre, $email, $password) {
+    public static function registrar($nombre, $email, $password)
+    {
         $sql = "INSERT INTO usuarios (nombre, email, password) VALUES (:nombre, :email, :password)";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":nombre", $nombre);
@@ -12,11 +14,20 @@ class UsuarioModelo {
         return $stmt->execute();
     }
 
-    public static function login($email) {
+    public static function login($email)
+    {
         $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
         $stmt = Conexion::conectar()->prepare($sql);
         $stmt->bindParam(":email", $email);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function listar()
+    {
+        $sql = "SELECT id, nombre, email AS correo FROM usuarios ORDER BY id DESC";
+        $stmt = Conexion::conectar()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

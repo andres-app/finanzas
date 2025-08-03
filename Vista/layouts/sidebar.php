@@ -10,7 +10,7 @@
            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
       Dashboard
     </a>
-    <a href="users"
+    <a href="usuarios"
        class="flex items-center gap-2 px-3 py-2 text-gray-700 rounded-md hover:bg-green-100 hover:text-green-700 transition">
       <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"

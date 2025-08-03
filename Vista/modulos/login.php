@@ -44,7 +44,7 @@ if (isset($_SESSION["id_usuario"])) {
     <form id="formLogin" method="post" class="space-y-5">
       <div>
         <label for="usuario" class="block mb-1 text-gray-700 font-medium">Usuario</label>
-        <input type="text" id="usuario" name="usuario" required
+        <input type="text" id="usuario" name="usuario" value="juan@gmail.com"required
           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           placeholder="Ingresa tu usuario">
       </div>

@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tablaUsuarios) {
     $(tablaUsuarios).DataTable({
       ajax: {
-        url: "Controlador/Usuario.php?op=listar", // Ajusta esta ruta si es necesario
+        url: "Controlador/Usuario.php?op=listar",
         dataSrc: "",
       },
       columns: [
@@ -134,12 +134,29 @@ document.addEventListener("DOMContentLoaded", () => {
         { data: "correo" },
       ],
       responsive: true,
-      dom: "Bfrtip",
-      buttons: [
-        { extend: "excelHtml5", text: "Exportar a Excel" },
-        { extend: "pdfHtml5", text: "Exportar a PDF" },
-        { extend: "print", text: "Imprimir" }
-      ],
+      dom: "<'flex flex-wrap items-center justify-between mb-4'Bf>" +
+        "<'overflow-x-auto't>" +
+        "<'flex items-center justify-between mt-4'p>",
+        buttons: [
+          {
+            extend: "excelHtml5",
+            text: '<i class="fas fa-file-excel"></i>',
+            titleAttr: 'Exportar a Excel',
+            className: 'btn-excel'
+          },
+          {
+            extend: "pdfHtml5",
+            text: '<i class="fas fa-file-pdf"></i>',
+            titleAttr: 'Exportar a PDF',
+            className: 'btn-pdf'
+          },
+          {
+            extend: "print",
+            text: '<i class="fas fa-print"></i>',
+            titleAttr: 'Imprimir',
+            className: 'btn-print'
+          }
+        ],        
       language: {
         url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
       }

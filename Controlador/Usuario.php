@@ -15,7 +15,7 @@ if (isset($_GET["op"])) {
     }
 
     if ($_GET["op"] == "login") {
-        $usuario = $_POST["usuario"]; // Puede ser email o nombre
+        $usuario = $_POST["usuario"];
         $password = $_POST["password"];
 
         $datos = UsuarioModelo::login($usuario);
@@ -30,7 +30,6 @@ if (isset($_GET["op"])) {
             exit;
         }
 
-        // Inicio de sesión correcto
         $_SESSION["id_usuario"] = $datos["id"];
         $_SESSION["nombre"] = $datos["nombre"];
         echo json_encode(["success" => true]);
@@ -40,6 +39,23 @@ if (isset($_GET["op"])) {
     if ($_GET["op"] == "listar") {
         $usuarios = UsuarioModelo::listar();
         echo json_encode($usuarios);
+        exit;
+    }
+
+    if ($_GET["op"] == "mostrar") {
+        $id = $_GET["id"];
+        $usuario = UsuarioModelo::mostrar($id);
+        echo json_encode($usuario);
+        exit;
+    }
+
+    if ($_GET["op"] == "editar") {
+        $id = $_POST["id"];
+        $nombre = $_POST["nombre"];
+        $correo = $_POST["correo"];
+
+        $editado = UsuarioModelo::editar($id, $nombre, $correo);
+        echo json_encode(["success" => $editado]);
         exit;
     }
 

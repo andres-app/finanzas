@@ -30,4 +30,24 @@ class UsuarioModelo
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function mostrar($id)
+{
+    $sql = "SELECT id, nombre, email AS correo FROM usuarios WHERE id = :id";
+    $stmt = Conexion::conectar()->prepare($sql);
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+public static function editar($id, $nombre, $correo)
+{
+    $sql = "UPDATE usuarios SET nombre = :nombre, email = :correo WHERE id = :id";
+    $stmt = Conexion::conectar()->prepare($sql);
+    $stmt->bindParam(":nombre", $nombre);
+    $stmt->bindParam(":correo", $correo);
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    return $stmt->execute();
+}
+
 }
